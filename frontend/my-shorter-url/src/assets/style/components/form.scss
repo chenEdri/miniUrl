@@ -1,0 +1,40 @@
+.url-form-container{
+    background-color: #c9c9c9ea;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    margin-top: 30px;
+    width: 500px;
+    padding: 20px;
+    &>*{
+        margin-bottom: 10px;
+    }
+    input{
+            background-color: transparent;
+            color: #eeeeee;
+            outline: none;
+            outline-style: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: solid #eeeeee 1px;
+            padding: 3px 10px;
+    }
+    select {
+        width: 190px;
+        padding: 5px 35px 5px 5px;
+        font-size: 16px;
+        border: 1px solid #CCC;
+        height: 34px;
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+        // appearance: none;
+        background:#eeeeee;
+      }
+    button{
+        width: 70px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        margin-bottom: 0px;
+    }
+}

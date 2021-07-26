@@ -1,0 +1,26 @@
+.url-container {
+  .button-urls {
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+.url-list {
+  width: 300px;
+  margin-left: 130px;
+  margin-top: 15px;
+}
+.url-preview {
+  display: grid;
+  text-align: start;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+
+  .url-link{
+      color:rgba(146, 45, 45, 0.822);
+      font-weight: bold;
+      &:hover{
+          color:#222222;
+          transition: 0.7s;
+      }
+  }
+}

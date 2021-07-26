@@ -1,0 +1,32 @@
+.form {
+  padding-top:130px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 600px;
+  // align-items: center;
+  // .form-width {
+  //   width: 80%;
+  //   align-self: flex-start;
+  // }
+  .form-width-color {
+    width: 25%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-self: flex-start;
+    height: fit-content;
+    border-bottom: none !important;
+  }
+  .color {
+    width: 90%;
+    border: none !important;
+  }
+
+  .form-warning-msg {
+    color: red;
+    font-weight: 500;
+    line-height: 1.2;
+    width: fit-content;
+  }
+}

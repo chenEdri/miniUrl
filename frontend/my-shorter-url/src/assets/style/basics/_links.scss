@@ -1,0 +1,9 @@
+.li, li{
+    list-style: none outside none; 
+}
+
+.link, a{
+    text-decoration-line: none;
+    color:$w;
+    font-weight: 500;
+}

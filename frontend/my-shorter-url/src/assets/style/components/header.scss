@@ -1,0 +1,81 @@
+.main-header {
+  background-color: $bgc-blue;
+  width: 100%;
+  position: absolute;
+  z-index: 7;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  color: $w;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  .logo{
+    max-width: 80px !important;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: center;
+    & > * {
+      margin-left: rem(10px);
+      margin-right: rem(10px);
+      cursor: pointer;
+    }
+    a{
+      color: #fff;
+    }
+   
+
+    @include for-mobile-layout {
+      margin: 0px auto;
+      width: 90%;
+    }
+    @include for-narrow-layout {
+      margin-right: 30%;
+      width: 90%;
+    }
+    @include for-normal-layout {
+      margin: 0 auto;
+      width: 50%;
+    }
+    @include for-wide-layout {
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    a {
+      @include for-mobile-layout {
+        font-size: 11px;
+      }
+      @include for-narrow-layout {
+        font-size: 12px;
+      }
+      @include for-normal-layout {
+        font-size: 1.125rem;
+      }
+      &.router-link-exact-active {
+        color: $light-blue;
+      }
+      &.ruter-link {
+        color: $w;
+      }
+    }
+  }
+
+  .top-link {
+    position: absolute;
+    top: 40;
+    right: 10%;
+    @include for-mobile-layout {
+      top: 100%;
+      right: 0%;
+      z-index: 2;
+      border: 1px solid $w;
+      padding: 5px;
+      background-color: $bgc-blue;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: $bgc-blue;
+    color: $black-blue;
+}
+
+html {
+    font-family: LatoR;
+    line-height: 1.6;
+    color: black-blue;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: 1fr auto;
+    font-size: rem(18px);
+    margin: 0;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 0.6em;
+    color: #000000;
+    line-height: 1;
+}
+
+h1 {
+    font-size: 5vw;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    margin: 0 0 1em;
+    // max-width: 40ch;
+}
+
+.ul-ds{
+    padding-inline-start: 0;
+}
+
+.table {
+    @extend %table;
+    @extend %table-bordered;
+    td {
+      color: $black-blue;
+      font-weight: 500;
+    }
+  }
