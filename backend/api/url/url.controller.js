@@ -26,10 +26,15 @@ async function getUrl(req, res) {
 
 async function addUrl(req, res) {
     const dbName = req.params.dbName;
-    if (dbName ==='all') return;
-    const newUrl = req.body;
-    (dbName === 'mg') ? await mgUrlService.add(newUrl) : await sqlUrlService.add(newUrl)
-    res.send(newUrl);
+    if (dbName ==='all') {
+        await mgUrlService.add(newUrl)
+        await sqlUrlService.add(newUrl)
+        res.send(newUrl);
+    }else{
+        const newUrl = req.body;
+        (dbName === 'mg') ? await mgUrlService.add(newUrl) : await sqlUrlService.add(newUrl)
+        res.send(newUrl);
+    }
 }
 
 async function deleteUrl(req, res) {

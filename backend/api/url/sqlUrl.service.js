@@ -11,9 +11,9 @@ module.exports = {
 }
 
 
-async function query(accountId) {
-    // const query = (accountId) ? `SELECT * from url WHERE url.accountId=${accountId}` : 'SELECT * from url';
-    const query = 'SELECT * FROM `url`'
+async function query(filterBy={}) {
+    const condition = _buildCretiria(filterBy)
+    const query = (condition.length)? `SELECT * FROM url WHERE userId= "${filterBy.userId}" ${condition}` :`SELECT * FROM url WHERE userId= "${filterBy.userId}"`
     let urls;
     try {
         urls = await dbService.runSQL(query)
@@ -54,9 +54,11 @@ async function add(url) {
     var query = `INSERT INTO url(
        src,
        shortUrl,
+       userId,
        nickname) VALUES(
             "${url.src}",
             "${shortUrl}",
+            "${url.userId}",
             "${url.nickname}"
             )`;
     return dbService.runSQL(query);
@@ -82,4 +84,11 @@ async function remove(id) {
     catch (err) {
         console.log(err);
     }
+}
+
+function _buildCretiria(filterBy){
+    let criteria ='';
+    if(filterBy.createdAt) criteria+=`AND createdAt <= "${filterBy.createdAt}"`;
+    if(filterBy.updateAt) criteria +=`AND updateAt <="${filterBy.updateAt}"`;
+    return criteria;
 }

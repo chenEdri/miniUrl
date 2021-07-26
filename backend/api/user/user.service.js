@@ -16,8 +16,7 @@ async function query(filterBy = {}) {
     const collection = await dbService.getCollection('user')
     try {
         const users = await collection.find(criteria).toArray();
-        // users.forEach(user => delete user.password);
-
+        users.forEach(user => delete user.password);
         return users
     } catch (err) {
         console.log('ERROR: cannot find users')
@@ -72,8 +71,10 @@ async function update(user) {
 
 async function add(user) {
     const collection = await dbService.getCollection('user')
+    const query = `INSERT INTO user(userName, email, password) VALUES("${user.userName}", "${user.email}", "${user.password}")`
     try {
         await collection.insertOne(user);
+        // await dbService.runSQL(query);
         return user;
     } catch (err) {
         console.log(`ERROR: cannot insert user`)
@@ -83,12 +84,7 @@ async function add(user) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    if (filterBy.txt) {
-        criteria.username = filterBy.txt
-    }
-    if (filterBy.minBalance) {
-        criteria.balance = { $gte: +filterBy.minBalance }
-    }
+    if (filterBy.urlId) criteria.urlId = filterBy.urlId
     return criteria;
 }
 
