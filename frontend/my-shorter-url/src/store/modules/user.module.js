@@ -10,6 +10,9 @@ export default {
     getters: {
         getUser(state) {
             return {...state.user}
+        },
+        getUserId(state) {
+            return state.user._id
         }
     },
     mutations: {

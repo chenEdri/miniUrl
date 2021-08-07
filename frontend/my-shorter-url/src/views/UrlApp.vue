@@ -30,9 +30,14 @@
           v-if="urls.length > 0"
           :urls="urls"
           :deleteUrl="deleteUrl"
+          :openUrlEditor="openUrlEditor"
         />
       </div>
-      <short-url-form :currentDb="dbName" :userId="userId" />
+      <short-url-form 
+      :currentDb="dbName" 
+      :userId="userId"
+      :urlToEdit="urlToEdit"
+      :closeUrlEditor="closeUrlEditor"  />
     </div>
   </section>
 </template>
@@ -47,6 +52,7 @@ export default {
   data() {
     return {
       urls: [],
+      urlToEdit:null,
       dbName: "all",
       userId: null,
       chosenBtn: "all",
@@ -81,6 +87,12 @@ export default {
         _id: id,
       });
     },
+    openUrlEditor(url){
+      this.urlToEdit = url;
+    },
+    closeUrlEditor(){
+      this.urlToEdit = null;
+    }
   },
   components: {
     ShortUrlList,

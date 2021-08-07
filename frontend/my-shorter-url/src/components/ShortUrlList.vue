@@ -10,6 +10,7 @@
           :key="idx"
           :url="url"
           :deleteUrl="deleteUrl"
+          :openUrlEditor="openUrlEditor"
         />
     </div>
   </section>
@@ -20,7 +21,7 @@ import ShortUrlPreview from "./ShortUrlPreview.vue"
 
 export default {
   name: "ShortUrlList",
-  props: ["urls","deleteUrl"],
+  props: ["urls","deleteUrl", "openUrlEditor"],
   components:{
     ShortUrlPreview
   }

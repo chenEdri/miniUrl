@@ -62,6 +62,9 @@ async function remove(UrlId) {
 
 
 async function update(url) {
+    console.log('update mg->', url);
+    const shortUrl = utilService.getShortUrl('mg');
+    url.shortUrl = shortUrl;
     const collection = await dbService.getCollection('url')
     url._id = ObjectId(url._id);
     url.updatedAt = Date.now();

@@ -45,6 +45,7 @@ async function deleteUrl(req, res) {
 }
 
 async function updateUrl(req, res) {
+    console.log('in updateUrl', req.params.dbName);
     const dbName = req.params.dbName;
     if (dbName === 'all') return;
     const url = req.body;

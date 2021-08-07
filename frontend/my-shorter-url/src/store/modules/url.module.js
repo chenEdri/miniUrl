@@ -28,7 +28,7 @@ export default {
             state.urls.splice(idx, 1)
         },
         updateUrl(state, { url }) {
-            const idx = state.urls.findIndex(current => url._id === current.id)
+            const idx = state.urls.findIndex(current => url._id === current._id)
             if (idx === -1) state.urls.unshift(url)
             else state.urls.splice(idx, 1, url)
         },
@@ -50,9 +50,9 @@ export default {
             await urlService.remove(dbName ,_id)
             context.commit({ type: 'removeUrl', _id })
         },
-        async updateUrl({ commit }, { url }) {
-            const updatedUrl = await urlService.save(url)
-            commit({ type: 'updateUrl', url: updatedUrl })
+        async updateUrl(context , { url, dbName }) {
+            const updatedUrl = await urlService.update(url, dbName)
+            context.commit({ type: 'updateUrl', url: updatedUrl })
             return updatedUrl;
         },
         // async getUrl(context, { id }) {

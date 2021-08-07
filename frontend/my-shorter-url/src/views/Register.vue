@@ -176,6 +176,7 @@ export default {
         email: this.form.email,
         password: this.form.password,
       });
+      this.clearForm()
     },
   },
 };

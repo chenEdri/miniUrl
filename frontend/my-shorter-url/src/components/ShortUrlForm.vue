@@ -5,6 +5,8 @@
       novalidate
       @submit.prevent="validateUrl"
     >
+      <div v-if="!this.$props.urlToEdit" class="md-title">Add Url</div>
+      <div v-else class="md-title">Edit Url</div>
       <md-card-content>
         <div class="md-layout md-gutter">
           <div class="md-layout-item md-small-size-100">
@@ -37,7 +39,6 @@
                 <md-option value="sql">SQL Db</md-option>
                 <md-option value="all">All</md-option>
               </md-select>
-             
             </md-field>
           </div>
           <div class="md-layout-item md-small-size-100">
@@ -61,8 +62,11 @@
         </div>
       </md-card-content>
       <md-card-actions>
-        <md-button type="submit" class="md-primary" :disabled="sending"
+        <md-button v-if="!this.$props.urlToEdit" type="submit" class="md-primary" :disabled="sending"
           >Add</md-button
+        >
+        <md-button v-else type="submit" class="md-primary" :disabled="sending"
+          >Submit</md-button
         >
       </md-card-actions>
     </form>
@@ -76,9 +80,10 @@ import { required, url } from "vuelidate/lib/validators";
 export default {
   name: "FormValidation",
   mixins: [validationMixin],
-  props: ["currentDb", "userId"],
+  props: ["currentDb", "userId", "urlToEdit", "closeUrlEditor"],
   data() {
     return {
+      edit: this.$props.urlToEdit,
       form: {
         src: "",
         nickname: "",
@@ -95,19 +100,18 @@ export default {
   },
   validations: {
     form: {
-      src:{
+      src: {
         required,
-        url
+        url,
       },
       nickname: {
-        required
+        required,
       },
     },
   },
   methods: {
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
-      console.log(fieldName);
       if (field) {
         return {
           "md-invalid": field.$invalid && field.$dirty,
@@ -124,7 +128,17 @@ export default {
         dbName: dbName,
         currentDb: this.$props.currentDb,
       });
-      this.clearForm();
+      // this.clearForm();
+    },
+    async editUrl() {
+      const dbName = this.form.dbName;
+      let newUrl = this.form;
+      delete newUrl.dbName;
+      this.$store.dispatch({
+        type: "updateUrl",
+        url: newUrl,
+        dbName: dbName,
+      });
     },
     clearForm() {
       this.$v.$reset();
@@ -133,17 +147,34 @@ export default {
       this.form.dbName = null;
       this.form.createdAt = null;
       this.form.updatedAt = null;
+      this.$props.closeUrlEditor()
     },
     async saveUrl() {
-      await this.addUrl();
+      (this.$props.urlToEdit)? await this.editUrl(): await this.addUrl();
       this.sending = true;
+      await this.clearForm()
     },
     validateUrl() {
       console.log("validate-", this.form);
       this.$v.$touch();
-
       if (!this.$v.$invalid) {
         this.saveUrl();
+      }
+    },
+  },
+  watch: {
+    "urlToEdit"(newUrl) {
+      if (newUrl) {
+        const db = typeof(newUrl._id) === 'string' ? 'mg':'sql';
+        this.form = {
+          _id: newUrl._id,
+          src: newUrl.src,
+          nickname: newUrl.nickname,
+          userId: newUrl.userId,
+          dbName: db,
+          createdAt: newUrl.createdAt,
+          updatedAt: newUrl.updatedAt,
+        };
       }
     },
   },
