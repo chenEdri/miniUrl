@@ -21,6 +21,22 @@ button{
   }
 }
 
+.url-btn {
+  padding: 10px 15px 10px 15px;
+  margin: 10px;
+  border-radius: 3px;
+  background-color: rgba(38, 105, 117, 0.808);
+  color: $w;
+  border: 1px solid rgba(22, 61, 68, 0.808);
+  font-family: LatoR;
+  cursor: pointer;
+  transition: 0.5s;
+
+  &:hover {
+    border: 1px solid rgba(122, 177, 187, 0.808);
+  }
+}
+
 .warning-btn {
   padding: 10px 15px 10px 15px;
   margin: 10px;
@@ -62,14 +78,14 @@ button{
 }
 
 .cancel-btn{
-  padding: 10px 10px 10px 10px;
+  padding: 5px;
   width: max-content;
   margin-left: 10px;
   border-radius: 8px;
   background-color: #ff4036d2;
   color: rgb(8, 8, 8);
   border: 1px solid rgb(17, 14, 14);
-  font-family: montserratR;
+  font-family: latoR;
   cursor: pointer;
   transition: 0.5s;
 }

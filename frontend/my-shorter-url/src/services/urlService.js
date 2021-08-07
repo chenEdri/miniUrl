@@ -2,7 +2,8 @@ import httpService from './httpService';
 
 export const urlService = {
     query,
-    add
+    add,
+    remove
 }
 
 async function query(dbName, userId){
@@ -12,4 +13,8 @@ async function query(dbName, userId){
 async function add(url, dbName){
     let res = await httpService.post(`url/${dbName}`, url)
     return res;
+}
+
+async function remove(dbName, id){
+    return await httpService.delete(`url/${dbName}/${id}`, id);
 }

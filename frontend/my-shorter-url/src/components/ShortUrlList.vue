@@ -1,10 +1,15 @@
 <template>
   <section>
-      <div class="flex column sb url-list">
+      <div class="url-list">
+        <div class="url-headline">
+              <h4>Nickname</h4>
+              <h4>Shortcut</h4>
+        </div>
         <short-url-preview
           v-for="(url, idx) in urls"
           :key="idx"
           :url="url"
+          :deleteUrl="deleteUrl"
         />
     </div>
   </section>
@@ -15,7 +20,7 @@ import ShortUrlPreview from "./ShortUrlPreview.vue"
 
 export default {
   name: "ShortUrlList",
-  props: ["urls"],
+  props: ["urls","deleteUrl"],
   components:{
     ShortUrlPreview
   }

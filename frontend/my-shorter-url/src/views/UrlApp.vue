@@ -1,16 +1,38 @@
 <template>
   <section class="fullscreen-layout url-container">
     <div class="flex justify-center">
-      <div>
-        <h2>My ShortUrls</h2>
-        <div class="button-urls">
-          <button class="classic-btn ml25" @click="changeDb('all')">all</button>
-          <button class="classic-btn" @click="changeDb('mg')">Mongo DB</button>
-          <button class="classic-btn" @click="changeDb('sql')">SQL DB</button>
+      <div class="mr25">
+        <div class="button-urls flex">
+          <h4 class="flex url-filter">Collections:</h4>
+          <button
+            v-bind:class="{ showOff: chosenBtn !== 'all' }"
+            class="url-btn ml25"
+            @click="changeDb('all')"
+          >
+            all
+          </button>
+          <button
+            v-bind:class="{ showOff: chosenBtn !== 'mg' }"
+            class="url-btn"
+            @click="changeDb('mg')"
+          >
+            Mongo DB
+          </button>
+          <button
+            v-bind:class="{ showOff: chosenBtn !== 'sql' }"
+            class="url-btn"
+            @click="changeDb('sql')"
+          >
+            SQL DB
+          </button>
         </div>
-        <short-url-list v-if="urls.length > 0" :urls="urls" />
+        <short-url-list
+          v-if="urls.length > 0"
+          :urls="urls"
+          :deleteUrl="deleteUrl"
+        />
       </div>
-      <short-url-form :currentDb="dbName" :userId="userId"/>
+      <short-url-form :currentDb="dbName" :userId="userId" />
     </div>
   </section>
 </template>
@@ -27,6 +49,7 @@ export default {
       urls: [],
       dbName: "all",
       userId: null,
+      chosenBtn: "all",
     };
   },
   async created() {
@@ -47,7 +70,16 @@ export default {
       this.urls = _urls;
     },
     async changeDb(dbName) {
+      this.chosenBtn = dbName;
       await this.loadUrls(dbName);
+    },
+    async deleteUrl(id) {
+      const dbName = this.dbName;
+      await this.$store.dispatch({
+        type: "removeUrl",
+        dbName,
+        _id: id,
+      });
     },
   },
   components: {

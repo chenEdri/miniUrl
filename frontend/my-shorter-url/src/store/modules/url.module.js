@@ -46,9 +46,9 @@ export default {
             const _url = await urlService.add(url, dbName)
             context.commit({type:'addUrl', url: _url, dbName, currentDb})
         },
-        async removeUrl({ commit }, { _id }) {
-            await urlService.remove(_id)
-            commit({ type: 'removeUrl', _id })
+        async removeUrl( context , {dbName, _id }) {
+            await urlService.remove(dbName ,_id)
+            context.commit({ type: 'removeUrl', _id })
         },
         async updateUrl({ commit }, { url }) {
             const updatedUrl = await urlService.save(url)

@@ -8,7 +8,7 @@ import 'vue-material/dist/theme/default.css'
 import './assets/style/global.scss';
 import store from "./store";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faLinkedin, faGithub, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vuelidate from 'vuelidate'
 
 
-library.add(faUserSecret)
+library.add(faUserSecret, faTrash)
 library.add(faFacebook, faLinkedin, faGithub, faWhatsapp)
 library.add(faCoffee)
 
