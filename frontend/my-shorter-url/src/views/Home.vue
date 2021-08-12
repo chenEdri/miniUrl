@@ -1,13 +1,23 @@
 <template>
   <section>
-    <div class="fullscreen-layout">
-      <h1>Short-Url Generator</h1>
-      <button
-        @click="goToUrlApp()"
-        class="flex align-self-center justify-self-center"
-      >
-        account page
-      </button>
+    <div class="fullscreen-layout homepage">
+      <div class="flex">
+        <div class="jumbo-container">
+          <h2 class="jumbo-header">Generate a Secured</h2>
+          <h2 class="jumbo-header">Website Link</h2>
+          <h4 class="jumbo-text">
+            With our generator you can easily create and share a sequred
+            web-link page to your friends
+          </h4>
+          <div class="hp-btn">
+            <button @click="goAsDemo()" class="special-btn">
+              Start Exploring
+            </button>
+            <!-- <button @click="goAsDemo()" class="special-btn">Demo</button> -->
+          </div>
+        </div>
+        <div class="flex img-hp"></div>
+      </div>
     </div>
   </section>
 </template>
@@ -32,6 +42,14 @@ export default {
     // synchronus functions
     goToUrlApp() {
       this.$router.push(`/url/${this.user._id}`);
+    },
+    async goAsDemo() {
+      await this.$store.dispatch("login", {
+        userName: "Chen Edri",
+        email: "chenedri22@gmail.com",
+        password: "12345",
+      });
+      this.goToUrlApp();
     },
   },
   computed: {

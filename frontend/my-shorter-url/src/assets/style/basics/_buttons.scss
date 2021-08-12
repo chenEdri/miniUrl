@@ -92,7 +92,7 @@ button{
 
 .special-btn {
   padding: 10px 15px 10px 15px;
-  margin: 10px;
+  // margin: 10px;
   border-radius: 8px;
   font-family: montserratR;
   cursor: pointer;
@@ -100,16 +100,16 @@ button{
     animation: pulse 5s infinite;
     @keyframes pulse {
       0% {
-        background-color: #001f3f;
+        background-color: #1a4672;
         color: #fff;
       }
       50% {
-        background-color: #942268;
+        background-color: #a02b73;
         color: #ccc;
       }
       100% {
-        background-color: #ff4136;
-        color: #222222;
+        background-color: #68266edc;
+        color: #fff;
       }
     }
   

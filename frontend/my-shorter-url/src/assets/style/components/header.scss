@@ -10,8 +10,14 @@
   color: $w;
   text-align: center;
   border-bottom: 1px solid #ccc;
-  .logo{
-    max-width: 80px !important;
+  .right-nav{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    padding-left: 20px;
+    .logo{
+      max-width: 80px !important;
+    }
   }
 
   .nav {

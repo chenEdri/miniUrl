@@ -2,7 +2,7 @@
     display: grid;
     min-height: 50vh;
     grid-template-columns: 20px 1fr 20px;
-    margin-top: 80px;
+    padding-top: 80px;
 
     > * {
         grid-column: 2;
@@ -34,10 +34,10 @@
 
 .fullscreen-layout{
     display: grid;
-    min-height: 60vh;
+    min-height: 64vh;
     grid-template-columns: 5px 1fr 5px;
-    margin-top: 80px;
-    margin-bottom: 7px;
+    padding-top: 80px;
+    padding-bottom: 9px;
 
     > * {
         grid-column: 2;

@@ -18,48 +18,48 @@
 }
 .url-list {
   margin-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
   margin-right: 95px;
   .url-headline {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1.3fr 0.4fr;
+    height: 170px;
     position: relative;
-    align-items: center;
     text-align: start;
     height: rem(30px);
-    border-bottom: 1.3px solid #204b64cc;
+    border-bottom: 1px solid #495861cc;
+    padding-bottom: 35px;
     margin-bottom: 10px;
-    >*{
+    > * {
       padding-left: 15px;
     }
-    :first-child {
-      border-right: 1px solid #204b64cc;
+    .toggle-list {
+      font-size: 14px;
+      display: flex;
+      .arrow {
+        max-width: 20px;
+        max-height: 20px;
+      }
     }
   }
   .url-preview {
     height: 100%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1.3fr 0.4fr;
     position: relative;
     align-items: center;
     text-align: start;
-    padding-bottom: 10px;
-    :last-child{
+    padding-bottom: 16px;
+    :last-child {
       padding-left: 15px;
     }
-    .border{
-      border-right: 1px solid #204b64cc;
-      height: 100%;
-    }
-    .trash{
-      width:30px !important;
-      border:none !important;
+    .trash {
+      width: 30px !important;
+      border: none !important;
     }
     .url-link {
+      width: fit-content;
       &:hover {
         color: rgba(179, 46, 46, 0.822);
-        
         transition: 0.7s;
       }
     }

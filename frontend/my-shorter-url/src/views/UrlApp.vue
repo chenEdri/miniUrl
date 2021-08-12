@@ -1,7 +1,7 @@
 <template>
   <section class="fullscreen-layout url-container">
     <div class="flex justify-center">
-      <div class="mr25">
+      <div class="mr25 w55">
         <div class="button-urls flex">
           <h4 class="flex url-filter">Collections:</h4>
           <button
@@ -45,6 +45,7 @@
 <script>
 import ShortUrlList from "../components/ShortUrlList.vue";
 import ShortUrlForm from "../components/ShortUrlForm.vue";
+
 // @ is an alias to /src
 
 export default {
@@ -56,6 +57,11 @@ export default {
       dbName: "all",
       userId: null,
       chosenBtn: "all",
+      dialog:{
+        shortUrl:'',
+        phone:''
+      },
+      isOpenDialog:false,
     };
   },
   async created() {
@@ -92,6 +98,10 @@ export default {
     },
     closeUrlEditor(){
       this.urlToEdit = null;
+    },
+    openDialog(shortUrl){
+      this.dialog.shortUrl = shortUrl;
+      this.isOpenDialog = true;
     }
   },
   components: {
